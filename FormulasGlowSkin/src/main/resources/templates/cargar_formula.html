@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org/" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Formulas GlowSkin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+</head>
+
+<body>
+  
+    <header>
+        <nav
+          class="navbar navbar-expand text-white"
+          style="background-color: #ccaf2f"
+        >
+          <div class="container-fluid">
+            <a href="/" class="navbar-brand">
+              <img
+                width="45%"
+                class="logo"
+                src="/img/LogoGlowSkin.png"
+                alt="Img logo glowSkin"
+              />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pagina GlowSkin</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Formulas
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#">Cargar de Formulas</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Cargar Materias Primas</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Listado de Formulas</a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        >Calculadora de Formulas</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Comercial
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        >Listado de Materias Primas</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Listado de Productos</a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Listado de Precios</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled">Usuario</a>
+                </li>
+              </ul>
+              <form class="d-flex" role="search">
+                <button class="btn btn-outline-dark" type="submit">
+                  Iniciar Sesion
+                  <i class="fa-solid fa-right-to-bracket"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+ 
+    <section>
+        <h1 class="display-5 text-center">Cargar Formula</h1>
+        <!--<h2 class="">Cargar Materias Primas</h2>-->
+        <form action="/formula/carga" method="post">
+            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                <div class="card-body">
+                    <h5 class="card-title">Error ð</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
+            </div>
+            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                <div class="card-body">
+                    <h5 class="card-title">Exito!</h5>
+                    <p class="card-text" th:text="${exito}"></p>
+                </div>
+            </div>
+            <div class="m-3">
+                <!--<label for="nombreFormula" class="form-label">Nombre de la formula:</label>-->
+                <input type="text" class="form-control" placeholder="Nombre de la Formula" id="nombreFormula"
+                    name="nombreFormula" />
+            </div>
+            <div class="m-3">
+                <!--<label for="nombreMateriaPrima" class="form-label">Nombre de la Materia Prima: </label>-->
+                <input type="text" class="form-control" placeholder="Nombre de la Materia Prima" id="nombreMateriaPrima"
+                    name="nombreMateriaPrima" />
+            </div>
+            <div class="m-3">
+                <!--<label for="precioActual" class="form-label">Precio Actual: $</label>-->
+                <input type="number" class="form-control" placeholder="Precio Actual" id="precioActual"
+                    name="precioActual" />
+            </div>
+            <div class="m-3">
+                <!--<label for="precioActual" class="form-label">Cantidad: </label>-->
+                <input type="number" class="form-control" placeholder="Cantidad" id="Cantidad" name="cantidad" />
+            </div>
+            <div class="m-3">
+                <!--<label for="descripcion" class="form-label">Descripción:</label>-->
+                <textarea name="descripcion" class="form-control" id="descripcion" placeholder="Descripcion"
+                    rows="3"></textarea>
+            </div>
+
+            <!-- <div class="row mt-3s"> -->
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <button class="btn btn-outline-info" type="button">
+                                Cargar Elemento
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-outline-secondary" type="submit">
+                                Guardar Formula
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button th:href="@{/}" type="button" class="btn btn-outline-warning">
+                                Volver
+                            </button>
+                        </div>
+                    </div>
+                <!-- </div> -->
+        </form>
+    </section>
+    <hr />
+    <section>
+        <div class="container-fluid">
+            <table class="table table-dark table-striped">
+                <tr>
+                    <th colspan="12" class="text-warning text-center">
+                        Crema Corporal
+                    </th>
+                </tr>
+                <tr class="text-success text-left">
+                    <th>Materia Prima</th>
+                    <th>Cantidad</th>
+                    <th>Gr/ml</th>
+                    <th>Porcentaje</th>
+                    <th>Precio costo</th>
+                    <th>Acciones</th>
+                </tr>
+                <tr>
+                    <td>Agua</td>
+                    <td>574</td>
+                    <td>ml</td>
+                    <td>57.4 %</td>
+                    <td>$ 28</td>
+                    <td>
+                        <a href="#">
+                            <span class="fa-solid fa-pen-fancy text-success"> </span>
+                        </a>
+                        <a href="#">
+                            <span class="fa-solid fa-delete-left text-danger"></span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <script src="https://kit.fontawesome.com/3ebe4b17b5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
