@@ -11,7 +11,7 @@
 	<groupId>com.spring</groupId>
 	<artifactId>ecommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Spring-ecommerce</name>
+	<name>Spring-My-ecommerce</name>
 	<description>Curso de Spring Boot proyecto de ecommerce</description>
 	<properties>
 		<java.version>17</java.version>
